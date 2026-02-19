@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InternHub | Summer Internship Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="tag">One-stop destination for summer internships</p>
+      <h1>Find Summer Internships from Official Portals & Trusted Aggregators</h1>
+      <p class="subtitle">
+        Discover opportunities, filter by your exact preferences, and get direct links to apply.
+      </p>
+      <div class="hero__stats" id="heroStats"></div>
+      <nav class="quick-nav" aria-label="Quick links">
+        <a href="#filters">Browse internships</a>
+        <a href="#resources">Student resources</a>
+        <a href="#sources">Source directory</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="filters" class="filters" aria-label="Internship filters">
+      <div class="filters__header">
+        <h2>Filter internships</h2>
+        <button id="resetBtn" class="btn btn--ghost">Reset filters</button>
+      </div>
+      <div class="filters__grid">
+        <label>Search<input id="searchInput" type="search" placeholder="Role, company, skill (e.g. React, ML, finance)" /></label>
+        <label>Domain<select id="domainFilter"><option value="">All domains</option></select></label>
+        <label>Location<select id="locationFilter"><option value="">All locations</option></select></label>
+        <label>Work mode<select id="modeFilter"><option value="">All modes</option><option value="Remote">Remote</option><option value="Hybrid">Hybrid</option><option value="On-site">On-site</option></select></label>
+        <label>Internship type<select id="typeFilter"><option value="">All types</option><option value="Full-time">Full-time</option><option value="Part-time">Part-time</option><option value="Flexible">Flexible</option></select></label>
+        <label>Source<select id="sourceFilter"><option value="">All sources</option><option value="Official">Official company website</option><option value="Aggregator">Aggregator</option></select></label>
+        <label>Paid<select id="paidFilter"><option value="">Both paid & unpaid</option><option value="Paid">Paid only</option><option value="Unpaid">Unpaid only</option></select></label>
+        <label>Deadline<select id="deadlineFilter"><option value="">Any deadline</option><option value="Open">Open now</option><option value="ClosingSoon">Closing within 14 days</option></select></label>
+      </div>
+    </section>
+
+    <section class="results" aria-live="polite">
+      <div class="results__header">
+        <h2 id="resultCount">0 internships found</h2>
+        <p>Each card has direct apply and source links.</p>
+      </div>
+      <div id="cards" class="cards"></div>
+      <p id="emptyState" class="empty hidden">No internships match your filters. Try broadening your search.</p>
+    </section>
+
+    <section id="resources" class="info-grid">
+      <article class="info-card">
+        <h3>Application checklist</h3>
+        <ul>
+          <li>One-page ATS-friendly resume</li>
+          <li>Role-specific cover letter (optional but helpful)</li>
+          <li>Updated LinkedIn and portfolio/GitHub</li>
+          <li>Short list of projects aligned to role</li>
+        </ul>
+      </article>
+      <article class="info-card">
+        <h3>Suggested timeline</h3>
+        <ul>
+          <li><strong>Oct–Dec:</strong> Prepare resume and projects</li>
+          <li><strong>Jan–Mar:</strong> Apply to official internships</li>
+          <li><strong>Mar–May:</strong> Track interviews and follow-ups</li>
+          <li><strong>May–Jun:</strong> Finalize offer and onboarding docs</li>
+        </ul>
+      </article>
+      <article class="info-card">
+        <h3>Interview prep focus</h3>
+        <ul>
+          <li>Software: DSA + system fundamentals</li>
+          <li>Data: SQL + statistics + ML basics</li>
+          <li>Business/Product: cases + communication</li>
+          <li>Design: portfolio walkthrough + UX process</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="sources" class="sources">
+      <h2>Trusted source directory</h2>
+      <p>Use these links if any listing expires or moves.</p>
+      <div class="source-list">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.jobs/content/en/teams/university-recruiting">Amazon University</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://careers.microsoft.com/v2/global/en/students">Microsoft Students</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://careers.google.com/students/">Google Students</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.atlassian.com/company/careers/students">Atlassian Students</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/jobs/internship-jobs/">LinkedIn Internship Search</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://internshala.com/internships">Internshala</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://wellfound.com/jobs">Wellfound</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Tip: Always cross-check eligibility, location, stipend, and deadline on the official application page before applying.</p>
+  </footer>
+
+  <template id="cardTemplate">
+    <article class="card">
+      <div class="card__top">
+        <h3 class="card__title"></h3>
+        <span class="badge badge--source"></span>
+      </div>
+      <p class="card__company"></p>
+      <div class="meta"></div>
+      <p class="card__description"></p>
+      <div class="chips"></div>
+      <div class="card__links">
+        <a class="btn btn--primary apply-link" target="_blank" rel="noopener noreferrer">Apply now</a>
+        <a class="btn btn--ghost source-link" target="_blank" rel="noopener noreferrer">View source</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
